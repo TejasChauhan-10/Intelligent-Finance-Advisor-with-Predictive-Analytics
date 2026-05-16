@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Finance Advisor — Budget</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -14,12 +14,14 @@
       <div class="brand"><h2>💰 Finance Advisor</h2></div>
       <nav>
         <ul>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li class="active"><a href="budget.html">Budget</a></li>
-          <li><a href="transactions.html">Transactions</a></li>
-          <li><a href="goals.html">Goals</a></li>
-          <li><a href="prediction.html">Predictions</a></li>
-          <li><a href="index.html" onclick="ui.logout()">Logout</a></li>
+          <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+          <li class="active"><a href="{{ url_for('budget_page') }}">Budget</a></li>
+          <li><a href="{{ url_for('transactions_page') }}">Transactions</a></li>
+          <li><a href="{{ url_for('goals_page') }}">Goals</a></li>
+          <li><a href="{{ url_for('prediction_page') }}">Predictions</a></li>
+          <li><a href="{{ url_for('emergency_page') }}">Emergency Fund</a></li>
+          <li><a href="{{ url_for('chatbot_page') }}">AI Advisor</a></li>
+          <li><a href="{{ url_for('home') }}" onclick="ui.logout()">Logout</a></li>
         </ul>
       </nav>
     </aside>
@@ -51,6 +53,6 @@
   </div>
 
   <div id="toastContainer"></div>
-  <script src="main.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

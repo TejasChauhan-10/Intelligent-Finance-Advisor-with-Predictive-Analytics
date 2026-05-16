@@ -1,123 +1,245 @@
-# Intelligent-Finance-Advisor-with-Predictive-Analytics
-
-A modern, scalable, and modular software application built to demonstrate professional software engineering practices.  
-This repository showcases clean architecture, structured development, and real-world implementation principles.
+# 🏦 Intelligent Personal Finance Advisor PRO
+### Predictive Analytics & AI Insights — Upgrade Guide
 
 ---
 
-## 🧭 Overview
+## 📁 Project Structure
 
-This project is designed to represent a **real-world software system** — combining backend logic, database management, and possibly a frontend interface.  
-It focuses on maintainability, clarity, and extensibility, making it suitable for academic as well as production use cases.
-
-Key aspects include:
-
-- Modular code organization.
-- Database-driven workflow (if applicable).
-- Reusable components and APIs.
-- Strong focus on clarity and documentation.
-
----
-
-## 📁 Folder Structure
-
-| Folder / File | Description |
-|----------------|-------------|
-| `/src` | Core source code for the project (Python/Java/C++/etc.) |
-| `/data` | Sample datasets or configuration files |
-| `/sql` | Database scripts for schema setup and data population (if applicable) |
-| `/docs` | Documentation, reports, and technical papers |
-| `/tests` | Unit and integration test files |
-| `README.md` | Project documentation |
-| `requirements.txt` / `pom.xml` | Dependency or build configuration |
-
----
-
-## 🧱 Core Features
-
-- **Modular Design:** Each component handles a specific responsibility to ensure separation of concerns.  
-- **Scalability:** Easily adaptable to larger datasets or complex requirements.  
-- **Maintainability:** Clear documentation and comments for easy onboarding.  
-- **Automation:** Can integrate with CI/CD pipelines and testing suites.  
-- **Security Practices:** Follows safe coding conventions and data handling guidelines.
-
----
-
-## ⚙️ Technologies Used
-
-- **Programming Language:** Python / Java / C++ (depending on the implementation)
-- **Database:** MySQL / PostgreSQL / SQLite (optional)
-- **Frameworks:** Flask / Spring Boot / Qt / etc. (depending on use case)
-- **Version Control:** Git and GitHub
-- **Documentation:** Markdown and inline code comments
-
----
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/yourusername/project-name.git
-cd project-name
+```
+FinancePRO_Upgraded/
+├── app.py                  ← Main Flask backend (upgraded)
+├── db_config.py            ← MySQL connection config
+├── database.sql            ← Full schema with new tables
+├── requirements.txt        ← Python dependencies
+│
+├── ml/
+│   ├── __init__.py
+│   └── train_models.py     ← Dataset generation + model training
+│
+├── models/                 ← Saved ML model files (auto-created)
+│   ├── goal_model.pkl
+│   └── expense_model.pkl
+│
+├── utils/
+│   ├── __init__.py
+│   ├── predictor.py        ← ML inference + Explainable AI
+│   ├── insights.py         ← Rule-based insights + health score
+│   └── chatbot.py          ← AI financial chatbot engine
+│
+├── templates/              ← All HTML pages
+│   ├── index.html          ← Login / Signup
+│   ├── dashboard.html      ← ✨ Upgraded: health score, insights
+│   ├── budget.html
+│   ├── transactions.html
+│   ├── goals.html
+│   ├── prediction.html     ← ✨ New: ML results + XAI + what-if
+│   ├── emergency.html      ← ✨ New: Emergency fund module
+│   └── chatbot.html        ← ✨ New: AI financial chatbot
+│
+└── static/
+    ├── style.css
+    └── script.js
 ```
 
-### 2. Install dependencies
-For Python:
+---
+
+## ⚡ Step-by-Step Setup
+
+### 1. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-For Java (Maven):
-```bash
-mvn clean install
+> **MySQL system library required:**
+> - Ubuntu/Debian: `sudo apt-get install libmysqlclient-dev`
+> - macOS: `brew install mysql-client`
+
+---
+
+### 2. Configure MySQL
+
+Edit `db_config.py` and set your credentials:
+
+```python
+app.config['MYSQL_HOST']     = 'localhost'
+app.config['MYSQL_USER']     = 'root'
+app.config['MYSQL_PASSWORD'] = 'YOUR_PASSWORD'
+app.config['MYSQL_DB']       = 'finance_advisor'
 ```
 
-### 3. Set up environment variables (if required)
-```bash
-cp .env.example .env
-```
+Or set environment variables:
 
-### 4. Run the application
 ```bash
-python main.py
-# or
-java -jar target/project-name.jar
+export MYSQL_PASSWORD=your_password
 ```
 
 ---
 
-## 🧩 Example Usage
+### 3. Create the Database
 
-Once the project is up and running, you can perform various operations like:
+```bash
+mysql -u root -p < database.sql
+```
 
-- Add or retrieve records from the database.
-- Run analytics or reports.
-- View output via command line or GUI.
-- Extend with APIs or web frontend.
-
----
-
-## 🧠 Design Highlights
-
-- **Clean Architecture:** Separation of business logic from presentation and data layers.
-- **Error Handling:** Graceful fallbacks and detailed logging.
-- **Testing:** Unit and integration tests for reliability.
-- **Extensibility:** Designed to easily plug in new features or modules.
+This creates the `finance_advisor` database with all tables including:
+- `emergency_fund`
+- `predictions`
+- `chatbot_logs`
 
 ---
 
-## 🧾 License
+### 4. Train the ML Models
 
-Released under the **MIT License** — feel free to use, modify, and distribute this project responsibly.
+```bash
+python ml/train_models.py
+```
+
+This will:
+- Generate a 2,000-row synthetic finance dataset
+- Engineer features (savings_rate, expense_ratio, discretionary_ratio, etc.)
+- Train and compare multiple classifiers (Logistic Regression, Random Forest, XGBoost)
+- Train and compare regression models (Random Forest, Gradient Boosting)
+- Save the best models to `models/goal_model.pkl` and `models/expense_model.pkl`
+
+Expected output:
+```
+── Classification Results ──
+  logistic            : accuracy = 0.82xx
+  random_forest       : accuracy = 0.90xx
+  xgboost             : accuracy = 0.91xx
+
+  ✅ Best classifier: xgboost (accuracy=0.91xx)
+
+── Regression Results ──
+  random_forest       : RMSE = 1850.xx
+  gradient_boosting   : RMSE = 1620.xx
+
+  ✅ Best regressor: gradient_boosting (RMSE=1620.xx)
+```
 
 ---
 
-## 👨‍💻 Author
+### 5. Run the Flask Backend
 
-**Tejas Chauhan** 
-📧 [your-tenacioustejas10@gmail.com]  
-📅 Last Updated: November 13, 2025
+```bash
+python app.py
+```
+
+Server starts at: `http://localhost:5000`
 
 ---
 
-> ⭐ If you find this project useful, please star the repository and share your feedback!
+### 6. Open the Frontend
+
+Serve the `templates/` folder with any static server:
+
+```bash
+# Option A — Python simple server (from the project root)
+cd templates
+python -m http.server 8080
+# Visit: http://localhost:8080/index.html
+
+# Option B — VS Code Live Server extension
+# Right-click dashboard.html → Open with Live Server
+
+# Option C — Deploy templates/ to any static host (Netlify, Vercel, etc.)
+```
+
+---
+
+## 🔌 New API Endpoints
+
+| Method | Endpoint              | Description                              |
+|--------|-----------------------|------------------------------------------|
+| GET    | `/emergency_status`   | Emergency fund status + risk level       |
+| POST   | `/update_emergency_fund` | Add money to emergency fund           |
+| POST   | `/predict_goal`       | ML goal achievement prediction           |
+| POST   | `/predict_expense`    | ML next-month expense forecast           |
+| POST   | `/explain_prediction` | Full XAI explanation + feature importance|
+| GET    | `/insights`           | Smart insights + financial health score  |
+| POST   | `/whatif`             | What-if scenario simulation              |
+| POST   | `/chat`               | AI financial chatbot                     |
+| GET    | `/dashboard_summary`  | Aggregated dashboard data                |
+
+---
+
+## 🤖 New Features Summary
+
+### 1. Emergency Fund Module (`emergency.html`)
+- Tracks 6-month expense target
+- Progress bar with risk levels: 🔴 High / 🟡 Medium / 🟢 Safe
+- One-click "Add Savings" to build the fund
+
+### 2. Machine Learning System
+- **Classification:** Predicts whether you'll achieve your budget goal
+- **Regression:** Forecasts next month's total expenses
+- Best model auto-selected based on accuracy (classification) and RMSE (regression)
+
+### 3. Explainable AI (`prediction.html`)
+- Shows WHY the model made each prediction
+- Feature importance bar chart
+- Human-readable reasoning (e.g., "Expense ratio is high at 0.85")
+
+### 4. Smart Insights Engine
+- Real-time rule-based alerts (overspending, low savings, rent too high, etc.)
+- Personalised savings tips with exact rupee amounts
+
+### 5. Financial Health Score
+- 0–100 composite score based on savings rate, expense ratio, and emergency fund
+- Labels: Excellent / Good / Fair / Poor
+
+### 6. AI Chatbot (`chatbot.html`)
+- Natural language queries
+- Uses live user financial data + ML predictions
+- Handles: goal status, forecasts, savings tips, what-if, health score, full summary
+- All chat logs stored in `chatbot_logs` table
+
+### 7. What-If Analysis (`prediction.html`)
+- Simulate reducing any spending category by any amount
+- Instantly see: new savings, new goal prediction, new health score
+
+### 8. Upgraded Dashboard (`dashboard.html`)
+- Health score ring animation
+- Top 3 AI insights panel
+- Prediction summary panel
+- Emergency fund mini widget
+
+---
+
+## 🗄️ New Database Tables
+
+```sql
+-- Emergency fund per user
+emergency_fund (fund_id, user_id, current_savings, updated_at)
+
+-- ML prediction logs
+predictions (pred_id, user_id, month, predicted_expense,
+             goal_achieved, confidence, explanation, created_at)
+
+-- Chatbot conversation history
+chatbot_logs (log_id, user_id, user_message, bot_response, created_at)
+```
+
+---
+
+## 🔧 Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| `Models not trained yet` | Run `python ml/train_models.py` first |
+| MySQL connection error | Check credentials in `db_config.py` |
+| CORS error in browser | Ensure Flask is running on port 5000 |
+| `ModuleNotFoundError: xgboost` | Run `pip install xgboost` |
+| Import error for utils | Run `app.py` from the project root directory |
+
+---
+
+## 🚀 Production Deployment Notes
+
+1. Replace `debug=True` with `debug=False` in `app.py`
+2. Use environment variables for all secrets (MySQL password, etc.)
+3. Serve frontend with Nginx or a CDN
+4. Use `gunicorn app:app` instead of `flask run`
+5. Add a cron job to retrain models monthly with real user data
+6. Consider Redis for chatbot session caching at scale
